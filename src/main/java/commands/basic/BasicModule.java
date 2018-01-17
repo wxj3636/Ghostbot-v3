@@ -9,7 +9,7 @@ public class BasicModule extends CommandModule {
         super(null, "");
 
         //Add all of the available commands here
-        //this.addCommand(new ShutdownCommand(this));
+        this.addCommand(new ShutdownCommand(this));
 
     }
 

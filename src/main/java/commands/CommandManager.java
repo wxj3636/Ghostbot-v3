@@ -1,5 +1,7 @@
 package commands;
 
+import commands.basic.BasicModule;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ public class CommandManager {
         this.modules = new ArrayList<CommandModule>();
 
         //Insert the modules here
-        //this.modules.add(new BasicModule(databaseConnection));
+        this.modules.add(new BasicModule());
 
     }
 
