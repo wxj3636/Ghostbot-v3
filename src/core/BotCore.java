@@ -3,7 +3,6 @@ package core;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
 
@@ -40,10 +39,6 @@ public class BotCore {
 
             System.err.println("[Fatal] Something bad happened. See stacktrace");
             e.printStackTrace();
-
-        } catch (RateLimitedException e) {
-
-            System.err.println("[Warning] RateLimit achieved, expect a few second delay");
 
         } catch (LoginException e) {
 
