@@ -1,28 +1,15 @@
-package sql;
+package sql.interfaces;
 
+import sql.MysqlCore;
 import sql.exceptions.SqlStatementExecutionError;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SqlInterface extends MysqlCore{
+public class SqlGenericInterface extends MysqlCore {
 
-    /**
-     * Singleton instance of the SqlInterface, only allowing one connection to the database at a time.
-     */
-    protected static SqlInterface instance;
-
-    public static SqlInterface getInstance() {
-
-        if(sql.SqlInterface.instance == null)
-            sql.SqlInterface.instance = new SqlInterface();
-
-        return sql.SqlInterface.instance;
-
-    }
-
-    protected SqlInterface() {
+    protected SqlGenericInterface() {
 
         //Init the SqlCore parent class
         super();
@@ -32,7 +19,7 @@ public class SqlInterface extends MysqlCore{
     /**
      * Method creating a statement which returns a response from the SQL database from a string
      */
-    public ResultSet ExecuteSelectStatement(String query) throws SqlStatementExecutionError {
+    public ResultSet executeSelectStatement(String query) throws SqlStatementExecutionError {
 
         try {
 
