@@ -12,9 +12,26 @@ public class MysqlCore {
 
 
     protected Connection connection;
+    protected static MysqlCore instance = null;
 
-    //Constructor which creates the database connection
+    /**
+     * Constructor which creates the SQL connection if an instance of this class doesn't already exist.
+     */
     protected MysqlCore() {
+
+        //Singleton implementation if the instance isn't already populated. Only create the connection once.
+        if(sql.MysqlCore.instance == null) {
+
+            sql.MysqlCore.instance = new MysqlCore();
+            createSqlInstanceConnection();
+        }
+
+    }
+
+    /**
+     * Method which creates an SQL connection, and stores the instance
+     */
+    private void createSqlInstanceConnection() {
 
         //Attempt to load the MYSQL driver
         try {
@@ -56,7 +73,8 @@ public class MysqlCore {
 
 
     }
-
-
-
 }
+
+
+
+
