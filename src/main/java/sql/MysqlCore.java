@@ -12,19 +12,13 @@ public class MysqlCore {
 
 
     protected Connection connection;
-    protected static MysqlCore instance = null;
 
     /**
      * Constructor which creates the SQL connection if an instance of this class doesn't already exist.
      */
     protected MysqlCore() {
 
-        //Singleton implementation if the instance isn't already populated. Only create the connection once.
-        if(sql.MysqlCore.instance == null) {
-
-            sql.MysqlCore.instance = new MysqlCore();
-            createSqlInstanceConnection();
-        }
+       createSqlInstanceConnection();
 
     }
 
@@ -36,7 +30,7 @@ public class MysqlCore {
         //Attempt to load the MYSQL driver
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
 
             System.out.println("[Error] Where is your MySQL JDBC Driver?");
