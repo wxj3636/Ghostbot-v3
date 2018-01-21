@@ -48,7 +48,7 @@ public class SqlUserInterface extends SqlGenericInterface {
      * Method which checks if a registered user is an Administrator or not, given their unique discord ID
      * @param userId The unique snowflake ID referencing a discord user account
      */
-    public boolean isUserAdmin(String userId) throws UserNotExistsException {
+    public boolean isUserAdmin(String userId)  {
 
         //Build the SQL query
         String query = "SELECT is_admin FROM discord_users WHERE snowflake_id = " + userId;
@@ -57,9 +57,10 @@ public class SqlUserInterface extends SqlGenericInterface {
 
             ResultSet result = this.executeSelectStatement(query);
 
-            //Check if the ResultSet is empty. If so, throw a unique error stating such.
+            //Check if the ResultSet is empty. If so, log an error and return false for safety
             if(!result.next()) {
-                throw new UserNotExistsException();
+                //TODO: Log an error to the Discord Logging System
+                return false;
             }
 
             //Set the ResultSet back to it's beginning and extrapolate it's data
@@ -80,7 +81,7 @@ public class SqlUserInterface extends SqlGenericInterface {
     /**
      * Method which sets a user with a given userID to either be an administrator, or not an administrator
      */
-    public void setUserAdminStatus(String userId, UserAdministratorState desiredState) throws UserNotAdministratorException {
+    public void setUserAdminStatus(String userId, UserAdministratorState desiredState)  {
 
         //Get whether the user should be set as an admin, or not an admin. (Defaulting to not)
         int desiredStateNumeric = 0;

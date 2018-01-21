@@ -1,7 +1,6 @@
 package sql.interfaces;
 
 import sql.MysqlCore;
-import sql.exceptions.SqlStatementExecutionError;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
