@@ -3,6 +3,10 @@ package commands.basic;
 import commands.Command;
 import commands.CommandModule;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import sql.MysqlCore;
+import sql.interfaces.SqlUserInterface;
+
+import java.sql.Connection;
 
 public class ShutdownCommand extends Command{
 
@@ -14,7 +18,16 @@ public class ShutdownCommand extends Command{
     @Override
     protected void doCommand(MessageReceivedEvent event) {
 
-        //TODO: Implement user administration checking before shutting down. (Requires user management functionality)
+
+        //Check if the user talking is an administrator before complying
+        SqlUserInterface userInterface = new SqlUserInterface();
+
+        if(!userInterface.isUserAdmin(event.getAuthor().getId())) {
+
+            //Silent nope.jpg
+            return;
+        }
+
         System.exit(1);
 
     }
