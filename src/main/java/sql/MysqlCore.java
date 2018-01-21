@@ -38,7 +38,6 @@ public class MysqlCore {
             return;
         }
 
-        System.out.println("Mysql Driver registered!");
 
         //Attempt to connect to the database.
         try {
@@ -48,6 +47,7 @@ public class MysqlCore {
             this.connection = DriverManager
                     .getConnection("jdbc:mysql://localhost:3306/"
                                     + configManager.getPropertyValue(ConfigurationVariable.MYSQL_DATABASE_NAME)
+                                    + "?useSSL=false"
                             , configManager.getPropertyValue(ConfigurationVariable.MYSQL_USERNAME)
                             , configManager.getPropertyValue(ConfigurationVariable.MYSQL_PASSWORD));
         }
