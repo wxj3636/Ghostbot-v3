@@ -9,6 +9,7 @@ public class UserModule extends CommandModule {
 
         //Add all of the available commands
         this.addCommand(new RegisterUserCommand(this));
+        this.addCommand(new SetAdminCommand(this));
     }
 
     @Override
