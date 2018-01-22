@@ -10,15 +10,13 @@ import java.util.List;
 
 public class CommandManager {
 
-    //SQL connection core for running queries with commands
-    private Connection databaseConnection = null;
 
     private List<CommandModule> modules;
 
     private CommandManager() {
 
 
-        this.modules = new ArrayList<CommandModule>();
+        this.modules = new ArrayList<>();
 
         //Insert the modules here
         this.modules.add(new BasicModule());

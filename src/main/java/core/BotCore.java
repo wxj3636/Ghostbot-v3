@@ -1,6 +1,7 @@
 package core;
 
 import commands.CommandListener;
+import core.enums.ConfigurationVariable;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;

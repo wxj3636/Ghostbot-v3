@@ -1,5 +1,7 @@
 package core;
 
+import core.enums.ConfigurationVariable;
+
 import java.io.*;
 import java.util.Properties;
 

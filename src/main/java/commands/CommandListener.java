@@ -13,8 +13,8 @@ public class CommandListener extends ListenerAdapter {
         Message message = event.getMessage();
         String contents = message.getContentRaw();
 
-        //This line is important. This sets the prefix which the system responds to.
-        if (!contents.startsWith("!")) {
+        //If the content doesn't start with the required bot prefix, ignore the message
+        if (!contents.startsWith(BotConfigurationManager.getInstance().getPropertyValue(ConfigurationVariable.BOT_COMMAND_TRIGGER))) {
 
             return;
         }

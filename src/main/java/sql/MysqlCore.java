@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import core.BotConfigurationManager;
-import core.ConfigurationVariable;
+import core.enums.ConfigurationVariable;
 
 import java.sql.Connection;
 
