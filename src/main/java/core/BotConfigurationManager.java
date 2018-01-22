@@ -39,9 +39,7 @@ public class BotConfigurationManager {
             + "at the following path: %s", propertyFilePath));
 
             try {
-                //Attempt to create the configuration file
-                configFile.mkdir();
-
+ 
                 //Populate the configuration
                 createEmptyConfigFile();
 
