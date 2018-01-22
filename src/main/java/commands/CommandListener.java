@@ -1,5 +1,7 @@
 package commands;
 
+import core.BotConfigurationManager;
+import core.enums.ConfigurationVariable;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
