@@ -20,7 +20,9 @@ public class CommandManager {
 
         //Insert the modules here
         this.modules.add(new BasicModule());
-        this.modules.add(new UserModule());
+
+        //All of UserModule requires SQL access. The following line is commented out, disabling all of the features until you plan to have that.
+        //this.modules.add(new UserModule());
 
     }
 

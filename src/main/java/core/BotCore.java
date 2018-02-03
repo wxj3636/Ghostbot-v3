@@ -2,6 +2,7 @@ package core;
 
 import commands.CommandListener;
 import core.enums.ConfigurationVariable;
+import moderation.ModerationCore;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -62,7 +63,11 @@ public class BotCore {
      */
     private void attachCallbacks() {
 
+        //The standard BotCommand listener
         this.jda.addEventListener(new CommandListener());
+
+        //The moderation system listener
+        this.jda.addEventListener(new ModerationCore());
 
     }
 
