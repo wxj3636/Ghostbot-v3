@@ -3,6 +3,9 @@ package core;
 import core.enums.ConfigurationVariable;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class BotConfigurationManager {
@@ -75,6 +78,9 @@ public String getPropertyValue(ConfigurationVariable requestedVariable) {
         props.setProperty("Discord_Bot_API_Key", "FillMeIn");
         props.setProperty("League_of_Legends_API_Key", "FillMeIn");
         props.setProperty("Bot_Command_Trigger", "!");
+
+        //Create the directory this should be saved in
+        Files.createDirectories(Paths.get(System.getenv("Appdata") + "\\DiscordBot"));
 
         File configFile = new File(propertyFilePath);
         FileWriter writer = new FileWriter(configFile);
