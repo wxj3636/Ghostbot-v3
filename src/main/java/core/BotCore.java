@@ -14,6 +14,13 @@ public class BotCore {
     private BotConfigurationManager configurationManager = null;
 
     /**
+     * A boolean tracking if there is an active SQL connection. If set to false, functions requiring such
+     * will not be processed.
+     * This is automatically set to false by the SqlCore if a connection cannot be made.
+     */
+    public static boolean sqlConnectionEstablished = true;
+
+    /**
      * Main Bot Constructor.
      * This creates the JDA instance, and attaches all of the available callbacks so that everything runs correctly.
      */

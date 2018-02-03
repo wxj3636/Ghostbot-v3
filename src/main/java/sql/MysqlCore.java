@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import core.BotConfigurationManager;
+import core.BotCore;
 import core.enums.ConfigurationVariable;
 
 import java.sql.Connection;
@@ -18,6 +19,13 @@ public class MysqlCore {
      */
     protected MysqlCore() {
 
+        //Do we have an interface available? - Using a hacky method to fix this, since it's not in the core framework. Muhahahahaha
+        //If not, do not attempt to create another connection
+
+        if(!BotCore.sqlConnectionEstablished)
+            return;
+
+        //Otherwise, create away!
        createSqlInstanceConnection();
 
     }
@@ -54,7 +62,8 @@ public class MysqlCore {
 
         catch (SQLException e) {
 
-            System.out.println("Connection Failed! Check console output for debugging");
+            System.out.println("Connection to the MYSQL Database has failed. Disabling functions requiring such.");
+            BotCore.sqlConnectionEstablished = false;
             e.printStackTrace();
             return;
         }
