@@ -31,7 +31,7 @@ public class RegisterUserCommand extends Command {
 
         //If the user does not exist, add them to the database
         userInterface.registerDiscordUser(discordId, discordUsername);
-        event.getChannel().sendMessage("You've been registered with Ghostbot!\nCommands are not available for use.").queue();
+        event.getChannel().sendMessage("You've been registered with Ghostbot!\nCommands are now available for use.").queue();
 
     }
 }

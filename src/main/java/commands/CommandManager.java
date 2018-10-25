@@ -1,5 +1,6 @@
 package commands;
 
+import commands.DnD.DnDModule;
 import commands.basic.BasicModule;
 import commands.user.UserModule;
 
@@ -22,7 +23,9 @@ public class CommandManager {
         this.modules.add(new BasicModule());
 
         //All of UserModule requires SQL access. The following line is commented out, disabling all of the features until you plan to have that.
-        //this.modules.add(new UserModule());
+        this.modules.add(new UserModule());
+
+        this.modules.add(new DnDModule());
 
     }
 

@@ -25,7 +25,7 @@ public class ShutdownCommand extends Command{
          * prepared to run this with a SQL database currently, so it's non-functioning. Talk to Conrad if you want
          * help getting this setup properly.
          */
-    /**
+
         //Check if the user talking is an administrator before complying
         SqlUserInterface userInterface = new SqlUserInterface();
 
@@ -38,7 +38,7 @@ public class ShutdownCommand extends Command{
 
 
         System.exit(1);
-     */
+
 
     }
 }
