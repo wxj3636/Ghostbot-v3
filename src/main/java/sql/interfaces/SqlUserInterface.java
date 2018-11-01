@@ -120,5 +120,49 @@ public class SqlUserInterface extends SqlGenericInterface {
         this.executeInsertStatement(queryBuilder.toString());
     }
 
+    /**
+     * Method creating character
+     */
+    public void createCharacter(String userId) {
 
+        //Create the SQL query
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("INSERT INTO characters (snowflake_id, currently_playing) VALUES (");
+        queryBuilder.append(userId);
+        queryBuilder.append(", \"");
+        queryBuilder.append(1);
+        queryBuilder.append("\")");
+
+        System.out.println(queryBuilder.toString());
+
+        //Execute the SQL statement
+        this.executeInsertStatement(queryBuilder.toString());
+    }
+
+    /**
+     * Method return characterID
+     */
+    public String fetchCharacterID(String userId) {
+
+        //Create the SQL query
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT MAX(character_id) FROM characters WHERE snowflake_id = '");
+        queryBuilder.append(userId);
+        queryBuilder.append("'");
+
+        ResultSet temp = this.executeSelectStatement(queryBuilder.toString());
+
+        System.out.println(queryBuilder.toString());
+
+        //Execute the SQL statement
+        try {
+
+            temp.next();
+            //System.out.println(temp.getString(1));
+            return temp.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "-1";
+    }
 }

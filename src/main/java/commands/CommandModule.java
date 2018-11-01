@@ -36,7 +36,7 @@ public abstract class CommandModule {
         for(Command command : this.commands) {
 
             String name = this.getCompleteName() + command.getName();
-            if(string.startsWith(name)) {
+            if(string.equals(name)) {
 
                 return command;
             }
