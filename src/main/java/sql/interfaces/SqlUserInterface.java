@@ -4,7 +4,7 @@ import sql.enums.UserAdministratorState;
 import sql.exceptions.SqlStatementExecutionError;
 import sql.exceptions.UserNotAdministratorException;
 import sql.exceptions.UserNotExistsException;
-
+import java.util.Random;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -123,20 +123,37 @@ public class SqlUserInterface extends SqlGenericInterface {
     /**
      * Method creating character
      */
-    public void createCharacter(String userId) {
+        public void createCharacter(String userId) {
 
-        //Create the SQL query
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("INSERT INTO characters (snowflake_id, currently_playing) VALUES (");
-        queryBuilder.append(userId);
-        queryBuilder.append(", \"");
-        queryBuilder.append(1);
-        queryBuilder.append("\")");
+            //Create the SQL query
+            StringBuilder queryBuilder = new StringBuilder();
+            queryBuilder.append("INSERT INTO characters (snowflake_id, currently_playing) VALUES (");
+            queryBuilder.append(userId);
+            queryBuilder.append(", \"");
+            queryBuilder.append(1);
+            queryBuilder.append("\")");
 
-        System.out.println(queryBuilder.toString());
+            System.out.println(queryBuilder.toString());
 
-        //Execute the SQL statement
-        this.executeInsertStatement(queryBuilder.toString());
+            //Execute the SQL statement
+            this.executeInsertStatement(queryBuilder.toString());
+
+            // Randomly create character stats
+            Random rand = new Random();
+            int pointBuy = 4, mod = 0;
+            int stat1 = 5, stat2 = 5, stat3 = 5;
+
+            mod = rand.nextInt(pointBuy);
+            stat1 += mod;
+            pointBuy -= mod;
+            mod = rand.nextInt(pointBuy);
+            stat2 += mod;
+            pointBuy -= mod;
+            stat3 += pointBuy;
+
+
+
+
     }
 
     /**
@@ -152,7 +169,7 @@ public class SqlUserInterface extends SqlGenericInterface {
 
         ResultSet temp = this.executeSelectStatement(queryBuilder.toString());
 
-        System.out.println(queryBuilder.toString());
+        //System.out.println(queryBuilder.toString());
 
         //Execute the SQL statement
         try {
