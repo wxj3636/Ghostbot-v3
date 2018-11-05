@@ -123,7 +123,20 @@ public class SqlUserInterface extends SqlGenericInterface {
     /**
      * Method creating character
      */
-        public void createCharacter(String userId) {
+        public void createCharacter(String userId, String characterName) {
+
+            //Create the SQL query
+            StringBuilder queryBuilder3 = new StringBuilder();
+            queryBuilder3.append("UPDATE characters SET currently_playing = 0 WHERE snowflake_id = ");
+            queryBuilder3.append(userId);
+            queryBuilder3.append(";");
+
+            System.out.println(queryBuilder3.toString());
+
+            //Execute the SQL statement
+            this.executeInsertStatement(queryBuilder3.toString());
+
+
 
             //Create the SQL query
             StringBuilder queryBuilder = new StringBuilder();
@@ -131,7 +144,7 @@ public class SqlUserInterface extends SqlGenericInterface {
             queryBuilder.append(userId);
             queryBuilder.append(", \"");
             queryBuilder.append(1);
-            queryBuilder.append("\")");
+            queryBuilder.append("\");");
 
             System.out.println(queryBuilder.toString());
 
@@ -141,19 +154,38 @@ public class SqlUserInterface extends SqlGenericInterface {
             // Randomly create character stats
             Random rand = new Random();
             int pointBuy = 4, mod = 0;
-            int stat1 = 5, stat2 = 5, stat3 = 5;
+            int mind = 5, body = 5, soul = 5;
 
-            mod = rand.nextInt(pointBuy);
-            stat1 += mod;
-            pointBuy -= mod;
-            mod = rand.nextInt(pointBuy);
-            stat2 += mod;
-            pointBuy -= mod;
-            stat3 += pointBuy;
+            for(int i = 0; i < pointBuy; i++){
+                mod = rand.nextInt(3);
+                if(mod == 0)
+                    mind++;
+                else if(mod == 1)
+                    body++;
+                else
+                    soul++;
+            }
 
+            SqlUserInterface userInterface = new SqlUserInterface();
 
+            // Create SQL query for character stats
+            StringBuilder queryBuilder2 = new StringBuilder();
+            queryBuilder2.append("INSERT INTO characterinfo (characterId, body, mind, soul, character_name) VALUES (");
+            queryBuilder2.append(userInterface.fetchCharacterID(userId));
+            queryBuilder2.append(", ");
+            queryBuilder2.append(mind);
+            queryBuilder2.append(", ");
+            queryBuilder2.append(body);
+            queryBuilder2.append(", ");
+            queryBuilder2.append(soul);
+            queryBuilder2.append(", \"");
+            queryBuilder2.append(characterName);
+            queryBuilder2.append("\");");
 
+            //Execute the SQL statement
+            this.executeInsertStatement(queryBuilder2.toString());
 
+            System.out.println(queryBuilder2.toString());
     }
 
     /**

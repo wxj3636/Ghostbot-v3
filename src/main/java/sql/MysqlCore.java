@@ -53,7 +53,7 @@ public class MysqlCore {
             BotConfigurationManager configManager = core.BotConfigurationManager.getInstance();
 
             this.connection = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/"
+                    .getConnection("jdbc:mysql://bgdc.cj6gypcxmegj.us-east-2.rds.amazonaws.com:3306/"
                                     + configManager.getPropertyValue(ConfigurationVariable.MYSQL_DATABASE_NAME)
                                     + "?useSSL=false"
                             , configManager.getPropertyValue(ConfigurationVariable.MYSQL_USERNAME)

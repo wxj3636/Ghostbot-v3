@@ -23,8 +23,12 @@ public class CreateCharacter extends Command {
             //Check to see if the user already exists
             SqlUserInterface userInterface = new SqlUserInterface();
 
+            String characterName = String.valueOf(event.getMessage().getContentRaw().substring(17));
+
+            System.out.println(characterName);
+
             //If the user does not exist, add them to the database
-            userInterface.createCharacter(discordId);
+            userInterface.createCharacter(discordId, characterName);
             //event.getChannel().sendMessage("You've been registered with Ghostbot!\nCommands are now available for use.").queue();
 
             event.getChannel().sendMessage("Character Created.").queue();
