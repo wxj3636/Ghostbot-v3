@@ -8,6 +8,7 @@ public class DnDModule extends CommandModule {
         super(null, "");
 
         this.addCommand(new CreateCharacter(this));
+        this.addCommand(new MyCharacters(this));
 
     }
 

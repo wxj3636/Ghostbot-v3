@@ -214,4 +214,22 @@ public class SqlUserInterface extends SqlGenericInterface {
         }
         return "-1";
     }
+
+    /**
+     * Method telling user all characters they created
+     */
+    public ResultSet myCharacters(String userId){
+
+        //Create the SQL query
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT character_name, characterId FROM characterinfo AS ci INNER JOIN characters AS c ON ci.characterId = c.character_id WHERE snowflake_id = '");
+        queryBuilder.append(userId);
+        queryBuilder.append("'");
+
+        ResultSet temp = this.executeSelectStatement(queryBuilder.toString());
+
+
+        return temp;
+
+    }
 }
