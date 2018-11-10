@@ -42,8 +42,9 @@ public class MyCharacters extends Command {
                     String characterName = temp.getString("character_name");
                     int characterId = temp.getInt("characterId");
                     System.out.println(characterName + "\t\t\t" + characterId );
-                    //event.getChannel().sendMessage(String.format("%s%-30s%d", characterName, characterId)).queue();
-                    event.getChannel().sendMessage(characterName + "\t\t\t" + characterId).queue();
+                    //event.getChannel().sendMessage(String.format("%-50s%-10d", characterName, characterId)).queue();
+                    event.getChannel().sendMessage(String.format("```java%n%-30s%-10d%n```", characterName, characterId)).queue();
+                    //event.getChannel().sendMessage(characterName + "\t\t\t" + characterId).queue();
                 }
             } catch (SQLException e ) {
                 //e.printSQLException();

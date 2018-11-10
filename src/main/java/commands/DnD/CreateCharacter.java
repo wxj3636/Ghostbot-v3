@@ -23,6 +23,11 @@ public class CreateCharacter extends Command {
             //Check to see if the user already exists
             SqlUserInterface userInterface = new SqlUserInterface();
 
+            if(String.valueOf(event.getMessage().getContentRaw()).length() == 16) {
+                event.getChannel().sendMessage("Character not created, needs a name.").queue();
+                return;
+            }
+
             String characterName = String.valueOf(event.getMessage().getContentRaw().substring(17));
 
             System.out.println(characterName);

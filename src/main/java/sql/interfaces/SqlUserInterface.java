@@ -125,7 +125,7 @@ public class SqlUserInterface extends SqlGenericInterface {
      */
         public void createCharacter(String userId, String characterName) {
 
-            //Create the SQL query
+            //Sets all "currentlyPlaying" values to 0 before adding the new character
             StringBuilder queryBuilder3 = new StringBuilder();
             queryBuilder3.append("UPDATE characters SET currently_playing = 0 WHERE snowflake_id = ");
             queryBuilder3.append(userId);
@@ -232,4 +232,38 @@ public class SqlUserInterface extends SqlGenericInterface {
         return temp;
 
     }
+
+
+    /**
+     * Method to change a player's active character
+     */
+    public void selectCharacter(String discordId, String characterId){
+
+        //Sets all "currentlyPlaying" values to 0
+        StringBuilder queryBuilder3 = new StringBuilder();
+        queryBuilder3.append("UPDATE characters SET currently_playing = 0 WHERE snowflake_id = ");
+        queryBuilder3.append(discordId);
+        queryBuilder3.append(";");
+
+        // Prints to console
+        System.out.println(queryBuilder3.toString());
+
+        //Execute the SQL statement
+        this.executeInsertStatement(queryBuilder3.toString());
+
+        //Sets all the players desired characterId to currentlyPlaying
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("UPDATE characters SET currently_playing = 1 WHERE snowflake_id = ");
+        queryBuilder.append(discordId);
+        queryBuilder.append(" AND character_id = ");
+        queryBuilder.append(characterId);
+        queryBuilder.append(";");
+
+        // Prints to console
+        System.out.println(queryBuilder.toString());
+
+        //Execute the SQL statement
+        this.executeInsertStatement(queryBuilder.toString());
+    }
+
 }
